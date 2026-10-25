@@ -73,9 +73,7 @@ class ProcessorGQL(object):
                             name
                             url
                             forkCount
-                            stargazers {
-                                totalCount
-                            }
+                            stargazerCount
                             owner {
                                 login
                             }
@@ -109,7 +107,7 @@ class ProcessorGQL(object):
             repo_data = repo['node']
             res.append({
                 'name': repo_data['name'],
-                'stargazers_count': repo_data['stargazers']['totalCount'],
+                'stargazers_count': repo_data['stargazerCount'],
                 'forks_count': repo_data['forkCount'],
                 'language': repo_data['primaryLanguage']['name'] if repo_data['primaryLanguage'] is not None else None,
                 'html_url': repo_data['url'],
@@ -198,6 +196,12 @@ class WriteFile(object):
 
             *Last Automatic Update Time: {write_time}*
 
+            ## Sponsor me
+
+            [Buy Me a Coffee | Alipay & WeChat Pay](https://afdian.com/a/EvanLi/plan)
+
+            [afdian 爱发电 EvanLi | 支付宝/微信支付](https://afdian.com/a/EvanLi/plan)
+
             ## Table of Contents
 
             * [Most Stars](#most-stars)
@@ -259,3 +263,4 @@ if __name__ == "__main__":
     t1 = datetime.now()
     run_by_gql()
     print("Total time: {}s".format((datetime.now() - t1).total_seconds()))
+
